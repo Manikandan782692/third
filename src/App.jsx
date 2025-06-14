@@ -1,7 +1,7 @@
 // App.jsx
 import './App.css';
 import { Toaster } from 'react-hot-toast';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import SignUp from './sign/login/SignUp.jsx';
 import { Login } from './sign/login/Login.jsx';
 import { Front } from './sign/login/Front.jsx';
@@ -37,7 +37,7 @@ const App = () => {
   if (authUser?.isBlocked) return <Navigate to="/login" replace />;
 
   return (
-    <Router>
+    <>
       <div className='flex absolute bg-white '>
         <button
           onClick={() => setShowSidebar(!showSidebar)}
@@ -57,7 +57,7 @@ const App = () => {
         <Route path="/login" element={!authUser ? <Login /> : <Navigate to="/" />} />
         <Route path="/" element={!authUser ? <Front /> : <Navigate to="/" />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 
